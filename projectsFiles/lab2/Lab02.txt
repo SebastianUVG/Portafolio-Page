@@ -1,0 +1,181 @@
+Sebastian Garcia Bustamante 22291
+
+(20 puntos) Utilizando httpie, hagan una solicitud de HTTP al servidor
+ubuntu@ip-172-31-30-203:~$ http get devng.online
+HTTP/1.1 301 Moved Permanently
+CF-RAY: 90f6d3411f7005df-IAD
+Connection: keep-alive
+Content-Type: text/html
+Date: Sun, 09 Feb 2025 21:06:46 GMT
+Location: https://devng.online/
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=kF9%2BMVlv6V6IkbXHt6zKXF%2FIlrFCimzqFtg7LIgmdlABNt%2BlqNND8KZ1ntmx%2FKsu0Os8MRaLtigRu0OECBMUCtxWlrLkGekLznK9waG5aha1EI5O21uwjUV%2BivHxNuk%3D"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+cf-cache-status: DYNAMIC
+server-timing: cfL4;desc="?proto=TCP&rtt=1303&min_rtt=1303&rtt_var=651&sent=1&recv=3&lost=0&retrans=0&sent_bytes=0&recv_bytes=133&delivery_rate=0&cwnd=249&unsent_bytes=0&cid=0000000000000000&ts=0&x=0"
+
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.24.0 (Ubuntu)</center>
+</body>
+</html>
+
+
+(10 puntos) Utilizando curl, hagan una solicitud de HTTP al servidor
+ubuntu@ip-172-31-30-203:~$ curl devng.online
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.24.0 (Ubuntu)</center>
+</body>
+</html>
+
+	(5 puntos) Que pasa si tratan de hacer una solicitud de HTTP desde el servidor hacia su computadora?
+	No pasa nada, al ejecutar el comando simplemente no carga nada, se queda espearando.
+
+(10 puntos) Utilizando tail dentro del servidor, obtengan las últimas 15 líneas del archivo /var/log/nginx/access.log
+ubuntu@ip-172-31-30-203:~$ tail -n 15 /var/log/nginx/access.log
+172.69.60.188 - - [09/Feb/2025:20:34:59 +0000] "GET /22193/top10/ HTTP/1.1" 200 2126 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"
+193.68.89.5 - - [09/Feb/2025:20:43:29 +0000] "GET / HTTP/1.1" 200 470 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+78.153.140.180 - - [09/Feb/2025:20:45:51 +0000] "GET /.env HTTP/1.1" 404 196 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+78.153.140.180 - - [09/Feb/2025:20:45:52 +0000] "POST / HTTP/1.1" 405 568 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+172.70.255.91 - - [09/Feb/2025:20:47:01 +0000] "GET /221645/lab2/lab2.txt HTTP/1.1" 200 10352 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0 (Edition std-1)"
+108.162.210.162 - - [09/Feb/2025:20:47:01 +0000] "GET /favicon.ico HTTP/1.1" 404 196 "https://devng.online/221645/lab2/lab2.txt" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0 (Edition std-1)"
+4.255.101.254 - - [09/Feb/2025:20:54:08 +0000] "SSH-2.0-Go" 400 166 "-" "-"
+54.196.247.85 - - [09/Feb/2025:20:54:38 +0000] "GET / HTTP/1.1" 200 315 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5"
+198.235.24.141 - - [09/Feb/2025:20:57:50 +0000] "GET / HTTP/1.1" 200 790 "-" "Expanse, a Palo Alto Networks company, searches across the global IPv4 space multiple times per day to identify customers&#39; presences on the Internet. If you would like to be excluded from our scans, please send IP addresses/domains to: scaninfo@paloaltonetworks.com"
+78.153.140.156 - - [09/Feb/2025:20:59:18 +0000] "GET /.env HTTP/1.1" 404 196 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+78.153.140.156 - - [09/Feb/2025:20:59:18 +0000] "POST / HTTP/1.1" 405 568 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36"
+80.82.77.202 - - [09/Feb/2025:21:04:29 +0000] "GET / HTTP/1.0" 200 1468 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36"
+54.198.62.236 - - [09/Feb/2025:21:05:22 +0000] "GET / HTTP/1.1" 200 790 "-" "HTTPie/3.2.2"
+172.71.195.58 - - [09/Feb/2025:21:06:46 +0000] "GET / HTTP/1.1" 301 178 "-" "HTTPie/3.2.2"
+172.70.35.168 - - [09/Feb/2025:21:08:39 +0000] "GET / HTTP/1.1" 301 178 "-" "curl/8.5.0"
+
+
+(10 puntos) Utilizando ps y grep identifiquen qué procesos está corriendo amazon dentro del servidor
+ubuntu@ip-172-31-30-203:~$ ps aux | grep amazon
+root      106908  0.0  1.9 1759116 18712 ?       Ssl  Feb07   0:09 /snap/amazon-ssm-agent/9881/amazon-ssm-agent
+root      106932  0.0  2.8 1850868 28240 ?       Sl   Feb07   0:43 /snap/amazon-ssm-agent/9881/ssm-agent-worker
+ubuntu    147404  0.0  0.2   7076  2048 pts/1    S+   21:15   0:00 grep --color=auto amazon
+
+
+(10 puntos) Utilizando dig dentro del servidor, obtengan la ip que resuelve al hacer un dns lookup uvg.edu.gt
+ubuntu@ip-172-31-30-203:~$ dig +short uvg.edu.gt
+45.223.56.41
+45.223.155.41
+
+(5 puntos) Cuanta memoria RAM, total usada y libre, tiene el servidor? (su respuesta debe estar en MB)
+ubuntu@ip-172-31-30-203:~$ free -m
+               total        used        free      shared  buff/cache   available
+Mem:             957         371         153           0         615         586
+Swap:              0           0           0
+
+Hay un total de 153 MB de memoria libre
+
+(5 puntos) Cuanta espacio de disco, total usado y disponible, tiene el servidor? (su respuesta debe estar en MB)
+ubuntu@ip-172-31-30-203:~$ df -m
+Filesystem     1M-blocks  Used Available Use% Mounted on
+/dev/root          28691  2534     26141   9% /
+tmpfs                479     0       479   0% /dev/shm
+tmpfs                192     1       191   1% /run
+tmpfs                  5     0         5   0% /run/lock
+/dev/xvda16          881    76       744  10% /boot
+/dev/xvda15          105     7        99   6% /boot/efi
+tmpfs                 96     1        96   1% /run/user/1000
+
+El servidor tiene un total de 28,691 MB de espacio en disco, con 2,534 MB usados y 26,141 MB disponibles.
+
+(5 puntos) Utilizando el comando ip obtengan la ip del servidor
+ubuntu@ip-172-31-30-203:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: enX0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc fq_codel state UP group default qlen 1000
+    link/ether 0a:ff:e1:fa:e8:65 brd ff:ff:ff:ff:ff:ff
+    inet 172.31.30.203/20 metric 100 brd 172.31.31.255 scope global dynamic enX0
+       valid_lft 2494sec preferred_lft 2494sec
+    inet6 fe80::8ff:e1ff:fefa:e865/64 scope link
+       valid_lft forever preferred_lft forever
+
+Las ip son: 127.0.0.1 y 172.31.30.203
+
+(10 puntos) lsof lista los archivos abiertos. Identifiquen los archivos abiertos por el protocolo TCP en el puerto 80
+ubuntu@ip-172-31-30-203:~$ sudo lsof -i TCP:80
+COMMAND    PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+nginx   131412     root    5u  IPv4 753878      0t0  TCP *:http (LISTEN)
+nginx   131412     root    7u  IPv6 753880      0t0  TCP *:http (LISTEN)
+nginx   131413 www-data    5u  IPv4 753878      0t0  TCP *:http (LISTEN)
+nginx   131413 www-data    7u  IPv6 753880      0t0  TCP *:http (LISTEN)
+
+(20 puntos) Utilizando netstat, listen los puertos por los que está escuchando el servidor. Deben filtrar usando las siguientes opciones de netstat (esto es un solo comando con estas opciones):
+
+tcp
+udp
+numeric (muestra los puertos por número)
+program (muestra qué programa es el que está escuchando)
+
+ubuntu@ip-172-31-30-203:~$ netstat -tulnp
+(No info could be read for "-p": geteuid()=1000 but you should be root.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      -
+tcp6       0      0 :::80                   :::*                    LISTEN      -
+tcp6       0      0 :::40                   :::*                    LISTEN      -
+udp        0      0 127.0.0.54:53           0.0.0.0:*                           -
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           -
+udp        0      0 172.31.30.203:68        0.0.0.0:*                           -
+udp        0      0 127.0.0.1:323           0.0.0.0:*                           -
+udp6       0      0 ::1:323                 :::*                                -
+
+(30 puntos) Utilizando ss, listen los puertos por los que está escuchando el servidor. Deben filtrar usando las siguientes opciones de ss (esto es un solo comando con estas opciones):
+summary
+tcp
+conexiones establecidas
+resuelvan los puertos numericos
+uso de memoria
+información interna de tcp
+proceso que usa el socket
+
+ubuntu@ip-172-31-30-203:~$ sudo ss --summary && ss --tcp --all --numeric --memory --info --processes --extended
+Total: 184
+TCP:   10 (estab 4, closed 0, orphaned 0, timewait 0)
+
+Transport Total     IP        IPv6
+RAW       1         0         1
+UDP       5         4         1
+TCP       10        6         4
+INET      16        10        6
+FRAG      0         0         0
+
+State       Recv-Q       Send-Q                      Local Address:Port                         Peer Address:Port       Process
+LISTEN      0            4096                        127.0.0.53%lo:53                                0.0.0.0:*           uid:991 ino:683082 sk:84 cgroup:/system.slice/systemd-resolved.service <->
+         skmem:(r0,rb131072,t0,tb16384,f0,w0,o0,bl0,d0) cubic cwnd:10
+LISTEN      0            511                               0.0.0.0:80                                0.0.0.0:*           ino:753878 sk:85 cgroup:/system.slice/nginx.service <->
+         skmem:(r0,rb131072,t0,tb16384,f0,w0,o0,bl0,d147) cubic cwnd:10
+LISTEN      0            511                               0.0.0.0:443                               0.0.0.0:*           ino:753879 sk:86 cgroup:/system.slice/nginx.service <->
+         skmem:(r0,rb131072,t0,tb16384,f0,w0,o0,bl0,d149) cubic cwnd:10
+LISTEN      0            4096                           127.0.0.54:53                                0.0.0.0:*           uid:991 ino:683084 sk:87 cgroup:/system.slice/systemd-resolved.service <->
+         skmem:(r0,rb131072,t0,tb16384,f0,w0,o0,bl0,d0) cubic cwnd:10
+ESTAB       0            0                           172.31.30.203:45810                      67.220.247.194:443         timer:(keepalive,2.603ms,0) ino:815951 sk:8c cgroup:/system.slice/snap.amazon-ssm-agent.amazon-ssm-agent.service <->
+         skmem:(r0,rb131072,t0,tb87040,f0,w0,o0,bl0,d0) sack cubic wscale:6,7 rto:203 rtt:2.783/0.304 ato:40 mss:1460 pmtu:9001 rcvmss:1460 advmss:8961 cwnd:10 bytes_sent:11629 bytes_acked:11630 bytes_received:13294 segs_out:1133 segs_in:918 data_segs_out:231 data_segs_in:235 send 41969098bps lastsnd:12400 lastrcv:12397 lastack:12397 pacing_rate 83934424bps delivery_rate 18136640bps delivered:232 app_limited busy:738ms rcv_space:56575 rcv_ssthresh:56575 minrtt:1.312 snd_wnd:59776
+ESTAB       0            0                           172.31.30.203:42260                        67.220.251.8:443         timer:(keepalive,27sec,0) ino:827372 sk:8f cgroup:/system.slice/snap.amazon-ssm-agent.amazon-ssm-agent.service <->
+         skmem:(r0,rb131072,t0,tb87040,f0,w0,o0,bl0,d0) sack cubic wscale:6,7 rto:201 rtt:0.777/0.244 ato:40 mss:1460 pmtu:9001 rcvmss:1460 advmss:8961 cwnd:10 bytes_sent:3053 bytes_acked:3054 bytes_received:6022 segs_out:14 segs_in:22 data_segs_out:7 data_segs_in:12 send 150321750bps lastsnd:2851 lastrcv:2811 lastack:2811 pacing_rate 300401864bps delivery_rate 60992160bps delivered:8 app_limited rcv_space:56575 rcv_ssthresh:56575 minrtt:0.479 snd_wnd:60032
+LISTEN      0            511                                  [::]:80                                   [::]:*           ino:753880 sk:88 cgroup:/system.slice/nginx.service v6only:1 <->
+         skmem:(r0,rb131072,t0,tb16384,f0,w0,o0,bl0,d0) cubic cwnd:10
+LISTEN      0            4096                                    *:40                                      *:*           ino:5957 sk:b cgroup:/system.slice/ssh.socket v6only:0 <->
+         skmem:(r0,rb131072,t0,tb16384,f0,w0,o0,bl0,d59) cubic cwnd:10
+ESTAB       0            744                [::ffff:172.31.30.203]:40                [::ffff:186.151.24.101]:59041       timer:(on,162ms,0) ino:823274 sk:8d cgroup:/system.slice/ssh.socket <->
+         skmem:(r0,rb131072,t0,tb600576,f3480,w8808,o0,bl0,d397) ts sack cubic wscale:7,7 rto:285 rtt:84.318/2.014 ato:40 mss:1448 pmtu:9001 rcvmss:1292 advmss:8949 cwnd:17 ssthresh:145 bytes_sent:1330078 bytes_retrans:652 bytes_acked:1328682 bytes_received:585630 segs_out:16613 segs_in:17979 data_segs_out:16365 data_segs_in:15634 send 2335539bps lastsnd:9 lastrcv:22 lastack:22 pacing_rate 4671064bps delivery_rate 15268456bps delivered:16343 busy:323019ms unacked:9 retrans:0/13 rcv_rtt:85.109 rcv_space:56575 rcv_ssthresh:56575 minrtt:74.385 snd_wnd:800640
+ESTAB       0            0                  [::ffff:172.31.30.203]:40                [::ffff:186.151.24.101]:10446       timer:(keepalive,67min,0) ino:822275 sk:8e cgroup:/system.slice/ssh.socket <->
+         skmem:(r0,rb131072,t0,tb87040,f0,w0,o0,bl0,d5) ts sack cubic wscale:7,7 rto:286 rtt:85.427/6.742 ato:41 mss:1448 pmtu:9001 rcvmss:1208 advmss:8949 cwnd:12 ssthresh:12 bytes_sent:11798 bytes_retrans:36 bytes_acked:11762 bytes_received:9566 segs_out:191 segs_in:196 data_segs_out:181 data_segs_in:170 send 1627214bps lastsnd:3104217 lastrcv:3104217 lastack:3104141 pacing_rate 1952656bps delivery_rate 1588984bps delivered:181 app_limited busy:4356ms retrans:0/1 rcv_space:56575 rcv_ssthresh:56575 minrtt:75.885 snd_wnd:64128
